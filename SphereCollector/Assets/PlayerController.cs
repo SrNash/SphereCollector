@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //[Header("Generales")]      //Variables Generales
+    [Header("Generales")]      //Variables Generales
     [SerializeField]
     float h, v; //Variables de desplazamiento del Player
     float turnSpeed;    //Variable de velocidad de rotación
@@ -15,12 +15,17 @@ public class PlayerController : MonoBehaviour
 
     //[Header("Audios")]
 
-    //[Header("Otros Componentes")]
+    [Header("Otros Componentes")]
+    [SerializeField]
+    Rigidbody rg;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(rg == null)
+        {
+            rg = GetComponent<Rigidbody>();
+        }
     }
 
     // Update is called once per frame
