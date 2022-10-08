@@ -30,14 +30,15 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        //timer -= Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if (timer >= 10f)
+        if (timer < 10f)
+        {
+            timerText.text = "0" +  timer.ToString("F0");
+        }else if (timer >= 10f)
         {
             timerText.text = timer.ToString("F0");
-        }else if (timer < 10f)
-        {
-            timerText.text = "0" + timer.ToString("F0");
         }
 
         if (timer <= 0)

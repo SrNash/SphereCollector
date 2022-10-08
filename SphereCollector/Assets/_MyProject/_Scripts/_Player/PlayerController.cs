@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float ySpeed;
     [SerializeField]
+    float smoothJump;
+    [SerializeField]
     float jumpSpeed;
     float originalStepOffset;
 
@@ -91,27 +93,18 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
-
+        
+        //Aplicamos Gravedad al Player
         ySpeed += Physics.gravity.y * Time.deltaTime;
         Vector3 velocity = new Vector3(0f,0f,0f);
-        velocity.y = ySpeed * .125f;
+        velocity.y = ySpeed * smoothJump * Time.deltaTime;
         controller.Move(velocity);
-       /* ySpeed += Physics.gravity.y * Time.deltaTime;   //Aplicamos gravedad al Player
-
-        Vector3 velocity = desireDirection * magnitude;
-        velocity.y = ySpeed;
-
-        controller.Move(velocity * Time.deltaTime);*/
-
-        ///ERROR - El Player deja de detectar el suelo, metodo para solventarlo: forzar a detectar cuando isGrounded = true
-        ///  
 
         //Detectamos si hay Ground o no
         if (controller.isGrounded)
         {
             controller.stepOffset = originalStepOffset;
             ySpeed = -.5f;
-            Debug.Log("LLEGUE!");
 
             //Saltamos o no
             if (Input.GetButtonDown("Jump"))
@@ -125,13 +118,12 @@ public class PlayerController : MonoBehaviour
         }
 
         //Mostraremos la cantidad de Coins que tiene el Player y los actualizaremos
-        if (coinsAmount < 10)
+        if (coinsAmount <= 9)
         {
-            coinsText.text = "00" + coinsAmount.ToString();
-        }else
+            coinsText.text = coinsAmount.ToString("000");
+        }else if (coinsAmount >= 10)
         {
-            coinsText.text = "0" + coinsAmount.ToString();
+            coinsText.text = coinsAmount.ToString("00");
         }
-        Debug.Log(controller.isGrounded);
     }
 }
