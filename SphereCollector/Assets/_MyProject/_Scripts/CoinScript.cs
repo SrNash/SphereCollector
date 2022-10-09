@@ -10,6 +10,8 @@ public class CoinScript : MonoBehaviour
     float rotSpeed;
     [SerializeField]
     Transform coinGO;
+    [SerializeField]
+    int points;
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +35,10 @@ public class CoinScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            player.coinsAmount += points;
             GameObject clone = Instantiate(player.coinPS, this.transform.position, this.transform.rotation);
             Destroy(clone, 1f);
-            player.coinsAmount += 1;
-            Destroy(this.gameObject, .1f);
+            Destroy(this.gameObject);
         }
     }
 }
