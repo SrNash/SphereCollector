@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController>();
         }
+        music.Play();
     }
 
     // Update is called once per frame

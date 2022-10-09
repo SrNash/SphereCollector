@@ -38,10 +38,6 @@ public class PlayerController : MonoBehaviour
     [Header("ParticlesSystems")]
     public GameObject coinPS;
 
-    [Header("AudioSources")]
-    public AudioSource coinAS;
-
-
     [Header("Otros Componentes")]
     [SerializeField]
     Rigidbody rg;
