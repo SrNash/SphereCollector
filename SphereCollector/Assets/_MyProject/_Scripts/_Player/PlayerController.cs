@@ -35,6 +35,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI coinsText;
 
+    [Header("ParticlesSystems")]
+    public GameObject coinPS;
+
+    [Header("AudioSources")]
+    public AudioSource coinAS;
+
 
     [Header("Otros Componentes")]
     [SerializeField]
@@ -118,6 +124,11 @@ public class PlayerController : MonoBehaviour
         }
 
         //Mostraremos la cantidad de Coins que tiene el Player y los actualizaremos
+        AddingPoints();
+    }
+
+    private void AddingPoints()
+    {
         if (coinsAmount <= 9)
         {
             coinsText.text = coinsAmount.ToString("000");

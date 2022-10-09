@@ -33,8 +33,10 @@ public class CoinScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GameObject clone = Instantiate(player.coinPS, this.transform.position, this.transform.rotation);
+            Destroy(clone, 1f);
             player.coinsAmount += 1;
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, .1f);
         }
     }
 }

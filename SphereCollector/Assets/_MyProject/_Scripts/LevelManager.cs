@@ -15,6 +15,10 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     PlayerController player;
+    [SerializeField]
+    AudioSource music;
+    [SerializeField]
+    AudioSource ambientMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,11 @@ public class LevelManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        Timer();
+    }
+
+    private void Timer()
     {
         //timer -= Time.deltaTime;
         timer += Time.deltaTime;
