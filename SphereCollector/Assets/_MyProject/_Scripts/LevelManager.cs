@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -26,9 +27,7 @@ public class LevelManager : MonoBehaviour
     TextMeshProUGUI timerVictoryText;
     [Header("Audio")]
     [SerializeField]
-    AudioSource music;
-    [SerializeField]
-    AudioSource ambientMusic;
+    SoundManager soundManager;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +38,9 @@ public class LevelManager : MonoBehaviour
         {
             player = FindObjectOfType<PlayerController>();
         }
-        music.Play();
+        
+        soundManager = FindObjectOfType<SoundManager>();
+        soundManager.SelectSound(0, .1f);
     }
 
     // Update is called once per frame
@@ -70,12 +71,24 @@ public class LevelManager : MonoBehaviour
         {
             pointsText.text = player.coinsAmount.ToString();
             timerVictoryText.text = timerText.text;
-            victoryCanvas.gameObject.SetActive(true);
+            victoryCanvas.gameObject.SetActive(true);            
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
             Debug.Log("Recolectaste todas las monedas");
         }
+    }
+
+    public void ClickQuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit!");
+    }
+    public void ClickReStart()
+    {
+        SceneManager.LoadScene("Level_0");
+        //SceneManager.LoadScene(0);
+        Debug.Log("Reseteando el Nivel");
     }
 }

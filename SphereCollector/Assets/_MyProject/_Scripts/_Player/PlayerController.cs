@@ -131,16 +131,4 @@ public class PlayerController : MonoBehaviour
             coinsText.text = coinsAmount.ToString("00");
         }
     }
-
-    public void ClickQuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Quit!");
-    }
-    public void ClickReStart()
-    {
-        SceneManager.LoadScene("Level_0");
-        //SceneManager.LoadScene(0);
-        Debug.Log("Reseteando el Nivel");
-    }
 }
