@@ -61,7 +61,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rotSpeed: 90
   coinGO: {fileID: 5149346712371078519}
-  points: 0
+  points: 1
 --- !u!1 &5149346712371078512
 GameObject:
   m_ObjectHideFlags: 0

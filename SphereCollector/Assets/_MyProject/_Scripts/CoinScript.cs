@@ -35,6 +35,7 @@ public class CoinScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            //other.gameObject.GetComponent<PlayerController>().coinsAmount += points;
             player.coinsAmount += points;
             GameObject clone = Instantiate(player.coinPS, this.transform.position, this.transform.rotation);
             Destroy(clone, 1f);

@@ -6,15 +6,25 @@ using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("PlayerController")]
+    [SerializeField]
+    PlayerController player;
+    [Header("Control de Nivel")]
     [SerializeField]
     int coinsLevel;
     [SerializeField]
-    TextMeshProUGUI timerText;
-    [SerializeField]
     float timer;
-
+    [Header("UI")]
     [SerializeField]
-    PlayerController player;
+    TextMeshProUGUI timerText;
+    [Header("VictoryCanvas")]
+    [SerializeField]
+    Canvas victoryCanvas;
+    [SerializeField]
+    TextMeshProUGUI pointsText;
+    [SerializeField]
+    TextMeshProUGUI timerVictoryText;
+    [Header("Audio")]
     [SerializeField]
     AudioSource music;
     [SerializeField]
@@ -35,29 +45,36 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Timer();
+        TimerCount();
     }
 
-    private void Timer()
+    private void TimerCount()
     {
-        //timer -= Time.deltaTime;
-        timer += Time.deltaTime;
+        //Comenzamos a contar el tiempo
+        //timer+= Time.deltaTime;
 
-        if (timer < 10f)
+        //Dividiremos dicho tiempo en minutos y segundos
+        int seconds = (int)(timer % 60);    //Realizamos una operación para comprobar si hemos llegado a contar 60 segundos
+        int minutes = (int)(timer / 60) % 60;   //Realizamos una operación para conocer la cantidad de minutos que llebamos
+
+        timerText.text = minutes.ToString() + ":" + seconds.ToString();
+
+        if (player.coinsAmount != coinsLevel)
         {
-            timerText.text = "0" +  timer.ToString("F0");
-        }else if (timer >= 10f)
-        {
-            timerText.text = timer.ToString("F0");
+            //Comenzamos a contar el tiempo
+            timer+= Time.deltaTime;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
-
-        if (timer <= 0)
+        else if (player.coinsAmount == coinsLevel)
         {
-            Debug.Log("Se termino el tiempo");
-        }
+            pointsText.text = player.coinsAmount.ToString();
+            timerVictoryText.text = timerText.text;
+            victoryCanvas.gameObject.SetActive(true);
 
-        if (player.coinsAmount == coinsLevel)
-        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             Debug.Log("Recolectaste todas las monedas");
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -70,9 +71,6 @@ public class PlayerController : MonoBehaviour
         {
             controller = GetComponent<CharacterController>();
         }
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -132,5 +130,17 @@ public class PlayerController : MonoBehaviour
         {
             coinsText.text = coinsAmount.ToString("00");
         }
+    }
+
+    public void ClickQuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit!");
+    }
+    public void ClickReStart()
+    {
+        SceneManager.LoadScene("Level_0");
+        //SceneManager.LoadScene(0);
+        Debug.Log("Reseteando el Nivel");
     }
 }
