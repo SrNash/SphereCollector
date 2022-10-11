@@ -143,4 +143,5 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: e0f16aed7eb7b7f41bb22d9ff7a2c4b8, type: 3}
   - {fileID: 8300000, guid: dc53c9fb8defb7946b2f11f63ae1179a, type: 3}
+  - {fileID: 8300000, guid: 3add5d7dce3503b45aabffe56cd202b6, type: 3}
   controlSounds: {fileID: 0}

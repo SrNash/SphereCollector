@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     TextMeshProUGUI timerVictoryText;
     [Header("Audio")]
     [SerializeField]
-    SoundManager soundManager;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +39,12 @@ public class LevelManager : MonoBehaviour
             player = FindObjectOfType<PlayerController>();
         }
         
-        soundManager = FindObjectOfType<SoundManager>();
-        soundManager.SelectSound(0, .1f);
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     // Update is called once per frame
@@ -58,7 +62,16 @@ public class LevelManager : MonoBehaviour
         int seconds = (int)(timer % 60);    //Realizamos una operación para comprobar si hemos llegado a contar 60 segundos
         int minutes = (int)(timer / 60) % 60;   //Realizamos una operación para conocer la cantidad de minutos que llebamos
 
-        timerText.text = minutes.ToString() + ":" + seconds.ToString();
+        if (timer <= 9f)
+        {
+            timerText.text = "0" + minutes.ToString() + ":0" + seconds.ToString();
+        }else if (timer >= 10f && timer <= 59.9f)
+        {
+            timerText.text = "0" + minutes.ToString() + ":" + seconds.ToString();
+        }/*else if (timer >= 60f)
+        {
+            
+        }*/
 
         if (player.coinsAmount != coinsLevel)
         {
@@ -71,7 +84,9 @@ public class LevelManager : MonoBehaviour
         {
             pointsText.text = player.coinsAmount.ToString();
             timerVictoryText.text = timerText.text;
-            victoryCanvas.gameObject.SetActive(true);            
+            victoryCanvas.gameObject.SetActive(true); 
+            
+            audioSource.mute = true;
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

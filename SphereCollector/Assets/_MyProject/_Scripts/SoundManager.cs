@@ -17,4 +17,9 @@ public class SoundManager : MonoBehaviour
     {
         controlSounds.PlayOneShot(sounds[indice],volumen);
     }
+    public void SelectLoopSound(int indice, float volumen,bool auSource)
+    {
+        controlSounds.Play();
+        controlSounds.loop = auSource;
+    }
 }

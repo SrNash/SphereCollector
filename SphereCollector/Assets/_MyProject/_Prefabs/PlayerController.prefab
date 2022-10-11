@@ -285,4 +285,4 @@ MonoBehaviour:
   coinPS: {fileID: 2063515002668287802, guid: cfbcd1f216af09449b78f9f74820cfe2, type: 3}
   rg: {fileID: 4755084650970112631}
   controller: {fileID: 4755084650970112625}
-  cam: {fileID: 0}
+  virtualCamera: {fileID: 0}

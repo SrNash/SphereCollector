@@ -51,7 +51,7 @@ MonoBehaviour:
   victoryCanvas: {fileID: 0}
   pointsText: {fileID: 0}
   timerVictoryText: {fileID: 0}
-  soundManager: {fileID: 0}
+  audioSource: {fileID: 270186307}
 --- !u!82 &270186307
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61,12 +61,12 @@ AudioSource:
   m_GameObject: {fileID: 8870684818516247765}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  OutputAudioMixerGroup: {fileID: 1787150097528026670, guid: b9fd573ff4c02e1448bd4ace6507cc15, type: 2}
+  m_audioClip: {fileID: 8300000, guid: e0f16aed7eb7b7f41bb22d9ff7a2c4b8, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

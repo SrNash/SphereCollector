@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Otros Elementos")]
     [SerializeField]
-    Camera cam;
+    Camera virtualCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
         if (desireDirection.magnitude >= .1f)
         {
-            float targetAngle = Mathf.Atan2(desireDirection.x, desireDirection.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(desireDirection.x, desireDirection.z) * Mathf.Rad2Deg + virtualCamera.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSpeed, turnSmoothSpeed);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
