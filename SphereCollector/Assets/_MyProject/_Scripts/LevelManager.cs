@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         TimerCount();
+        VictoryMoment();
     }
 
     private void TimerCount()
@@ -62,17 +63,17 @@ public class LevelManager : MonoBehaviour
         int seconds = (int)(timer % 60);    //Realizamos una operación para comprobar si hemos llegado a contar 60 segundos
         int minutes = (int)(timer / 60) % 60;   //Realizamos una operación para conocer la cantidad de minutos que llebamos
 
-        if (timer <= 9f)
+        if (seconds <= 9f)
         {
             timerText.text = "0" + minutes.ToString() + ":0" + seconds.ToString();
-        }else if (timer >= 10f && timer <= 59.9f)
+        }else if (seconds >= 10f && seconds <= 59.9f)
         {
             timerText.text = "0" + minutes.ToString() + ":" + seconds.ToString();
-        }/*else if (timer >= 60f)
-        {
-            
-        }*/
+        }
+    }
 
+    private void VictoryMoment()
+    {
         if (player.coinsAmount != coinsLevel)
         {
             //Comenzamos a contar el tiempo
